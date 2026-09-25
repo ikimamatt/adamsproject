@@ -131,13 +131,20 @@
             <span class="divider-line" style="background:rgba(255,255,255,0.25);"></span>
             <h2 class="section-title" style="color:var(--color-white); margin-top:0.5rem;">Galeri Adam Dustin</h2>
         </div>
-        <div style="max-width:1300px; margin:2.5rem auto 0; display:flex; overflow-x:auto; gap:1rem; scrollbar-width:none;">
-            <img src="/img/lexa.png" alt="Galeri" style="width:280px; height:280px; object-fit:cover; flex-shrink:0; filter:grayscale(25%);">
+        <div style="max-width:1300px; margin:2.5rem auto 0; display:flex; overflow-x:auto; gap:1rem; scrollbar-width:none; -ms-overflow-style:none;">
+            @foreach($latestGalleries as $gallery)
+            <img src="{{ asset('media/' . $gallery->image) }}"
+                 alt="Galeri Adam Dustin"
+                 style="width:280px; height:280px; object-fit:cover; flex-shrink:0; filter:grayscale(25%); transition:filter 0.4s ease;"
+                 onmouseover="this.style.filter='grayscale(0%)'"
+                 onmouseout="this.style.filter='grayscale(25%)'">
+            @endforeach
             <div style="width:280px; height:280px; flex-shrink:0; background:var(--color-charcoal); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:1rem;">
                 <p style="color:rgba(255,255,255,0.7); font-family:var(--font-serif); font-size:1rem; text-align:center; padding:0 1.5rem; line-height:1.6;">Dan banyak momen lainnya bersama Adam</p>
                 <a href="{{ route('galery') }}" class="btn-elegant-white" style="font-size:0.7rem; padding:0.5rem 1.5rem;">Lihat Galeri</a>
             </div>
         </div>
+
     </div>
 
     {{-- ============================================================

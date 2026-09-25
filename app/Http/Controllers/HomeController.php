@@ -37,10 +37,12 @@ class HomeController extends Controller
 
     $logo = Logo::first();
 
+    $latestGalleries = Gallery::latest()->take(3)->get();
+
     $socialMedia = SocialMedia::first() ?? new SocialMedia();
 
     // Mengirimkan data jumbotron dan berita fitur ke tampilan home
-    return view('home', compact('jumbotron', 'featuredNews','allnews','quote','mainquotes', 'introduction', 'videoLink', 'logo', 'socialMedia'));
+    return view('home', compact('jumbotron', 'featuredNews','allnews','quote','mainquotes', 'introduction', 'videoLink', 'logo', 'socialMedia', 'latestGalleries'));
     }
 
     public function berita()
