@@ -133,11 +133,15 @@
         </div>
         <div style="max-width:1300px; margin:2.5rem auto 0; display:flex; overflow-x:auto; gap:1rem; scrollbar-width:none; -ms-overflow-style:none;">
             @foreach($latestGalleries as $gallery)
-            <img src="{{ asset('media/' . $gallery->image) }}"
-                 alt="Galeri Adam Dustin"
-                 style="width:280px; height:280px; object-fit:cover; flex-shrink:0; filter:grayscale(25%); transition:filter 0.4s ease;"
-                 onmouseover="this.style.filter='grayscale(0%)'"
-                 onmouseout="this.style.filter='grayscale(25%)'">
+            <div class="home-gallery-item"
+                 onclick="openHomeGallery('{{ asset('media/' . $gallery->image) }}')"
+                 style="width:280px; height:280px; flex-shrink:0; position:relative; overflow:hidden; cursor:pointer;">
+                <img src="{{ asset('media/' . $gallery->image) }}"
+                     alt="Galeri Adam Dustin"
+                     class="home-gallery-img">
+                <div class="home-gallery-overlay"></div>
+                <span class="home-gallery-plus">+</span>
+            </div>
             @endforeach
             <div style="width:280px; height:280px; flex-shrink:0; background:var(--color-charcoal); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:1rem;">
                 <p style="color:rgba(255,255,255,0.7); font-family:var(--font-serif); font-size:1rem; text-align:center; padding:0 1.5rem; line-height:1.6;">Dan banyak momen lainnya bersama Adam</p>
@@ -145,6 +149,67 @@
             </div>
         </div>
 
+        {{-- Lightbox Popup --}}
+        <div id="homeGalleryLightbox"
+             style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.93); z-index:9999; align-items:center; justify-content:center; cursor:pointer;"
+             onclick="closeHomeGallery()">
+            <span style="position:absolute; top:1.5rem; right:1.5rem; color:rgba(255,255,255,0.7); font-size:2rem; line-height:1; cursor:pointer; transition:all 0.2s ease;"
+                  onmouseover="this.style.color='#fff'; this.style.transform='rotate(90deg)'"
+                  onmouseout="this.style.color='rgba(255,255,255,0.7)'; this.style.transform='rotate(0deg)'">&times;</span>
+            <img id="homeGalleryImg"
+                 src=""
+                 alt="Galeri"
+                 style="max-width:90vw; max-height:90vh; object-fit:contain; box-shadow:0 0 80px rgba(0,0,0,0.8);"
+                 onclick="event.stopPropagation()">
+        </div>
+
+        <style>
+            .home-gallery-item { background: var(--color-charcoal); }
+            .home-gallery-img {
+                width: 100%; height: 100%;
+                object-fit: cover;
+                filter: grayscale(25%);
+                transition: transform 0.55s cubic-bezier(0.4,0,0.2,1), filter 0.55s ease;
+            }
+            .home-gallery-item:hover .home-gallery-img {
+                transform: scale(1.08);
+                filter: grayscale(0%);
+            }
+            .home-gallery-overlay {
+                position: absolute; inset: 0;
+                background: rgba(0,0,0,0);
+                transition: background 0.35s ease;
+            }
+            .home-gallery-item:hover .home-gallery-overlay {
+                background: rgba(0,0,0,0.38);
+            }
+            .home-gallery-plus {
+                position: absolute; inset: 0;
+                display: flex; align-items: center; justify-content: center;
+                font-size: 2.5rem; color: #fff;
+                opacity: 0;
+                transform: scale(0.7);
+                transition: opacity 0.35s ease, transform 0.35s ease;
+            }
+            .home-gallery-item:hover .home-gallery-plus {
+                opacity: 1;
+                transform: scale(1);
+            }
+        </style>
+
+        <script>
+            function openHomeGallery(src) {
+                const lb = document.getElementById('homeGalleryLightbox');
+                document.getElementById('homeGalleryImg').src = src;
+                lb.style.display = 'flex';
+            }
+            function closeHomeGallery() {
+                document.getElementById('homeGalleryLightbox').style.display = 'none';
+            }
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') closeHomeGallery();
+            });
+        </script>
     </div>
 
     {{-- ============================================================
