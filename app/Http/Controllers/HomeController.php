@@ -25,7 +25,7 @@ class HomeController extends Controller
     // Mengambil data berita fitur
     $featuredNews = SignatureNews::where('is_featured', 1)->get();
 
-    $allnews = SignatureNews::all();
+    $allnews = SignatureNews::latest('created_at')->get();
 
     $quote = Quote::all();
 

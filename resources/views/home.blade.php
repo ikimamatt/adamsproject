@@ -23,7 +23,7 @@
 
         {{-- Teks kiri --}}
         <div class="hero-content animate-fadeup">
-            <p class="hero-eyebrow">Pengusaha &amp; Tokoh Muda Kalimantan</p>
+            <!-- <p class="hero-eyebrow">Pengusaha &amp; Tokoh Muda Kalimantan</p> -->
             <h1 class="hero-name">Adam<br>Dustin<br>Bhakti</h1>
             <p class="hero-tagline">&ldquo;{{ trim($jumbotron->text_left, " \t\n\r\0\x0B\"'“”") }}&rdquo;</p>
             <a href="{{ route('profil') }}" class="btn-elegant-white">Mengenal Adam</a>
