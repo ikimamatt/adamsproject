@@ -9,7 +9,6 @@ export default defineConfig({
         }),
     ],
     build: {
-        manifest: true, // Menghasilkan manifest.json
-        outDir: 'public/build', // Lokasi output folder
+        manifest: 'manifest.json', // Output ke public/build/manifest.json langsung
       },
 });
