@@ -73,8 +73,9 @@ Route::middleware('admin')->prefix('admin')->group(function () {
 
 });
 
-// Route streamer untuk menyajikan file storage langsung via PHP
-Route::get('/storage/{path}', function ($path) {
+// Route streamer: gunakan /media/ agar tidak diblokir LiteSpeed
+// yang memproteksi folder fisik /storage/ di server
+Route::get('/media/{path}', function ($path) {
     if (str_contains($path, '..')) {
         abort(404);
     }
@@ -88,18 +89,5 @@ Route::get('/storage/{path}', function ($path) {
     return response()->file($filePath, [
         'Cache-Control' => 'public, max-age=31536000',
     ]);
-})->where('path', '.*')->name('storage.stream');
-
-Route::get('/debug-storage', function () {
-    $dir = storage_path('app/public/logos');
-    return response()->json([
-        'base_path' => base_path(),
-        'storage_path' => storage_path(),
-        'app_public' => storage_path('app/public'),
-        'dir_exists' => is_dir($dir),
-        'files_in_logos' => is_dir($dir) ? scandir($dir) : null,
-        'target_file_exists' => file_exists(storage_path('app/public/logos/sl4HKNwyccH7Id7ppbynBHhB80eeraNGFd3t1Okk.png')),
-    ]);
-});
-
+})->where('path', '.*')->name('media.stream');
 

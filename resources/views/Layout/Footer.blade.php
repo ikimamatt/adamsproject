@@ -10,7 +10,7 @@
         <div class="footer-grid">
             <!-- Brand -->
             <div>
-                <img src="{{ asset('storage/' . $logo->profile_image) }}"
+                <img src="{{ asset('media/' . $logo->profile_image) }}"
                      alt="Adam Dustin Bhakti"
                      class="footer-brand-logo">
                 <p class="footer-brand-text">

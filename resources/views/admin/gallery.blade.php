@@ -30,8 +30,8 @@
                             <th scope="row">{{ $gallery->id }}</th>
                             <td>
                                 @if($gallery->image)
-                                <a href="{{ asset('storage/' . $gallery->image) }}" data-toggle="lightbox" data-gallery="example-gallery">
-                                    <img src="{{ asset('storage/' . $gallery->image) }}" alt="Gallery Image" width="100" class="img-thumbnail">
+                                <a href="{{ asset('media/' . $gallery->image) }}" data-toggle="lightbox" data-gallery="example-gallery">
+                                    <img src="{{ asset('media/' . $gallery->image) }}" alt="Gallery Image" width="100" class="img-thumbnail">
                                 </a>
                                 @endif
                             </td>

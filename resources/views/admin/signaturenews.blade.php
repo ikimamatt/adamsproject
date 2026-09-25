@@ -78,7 +78,7 @@
                     </td>
                     <td>
                         @if($item->image)
-                            <img src="{{ asset('storage/' . $item->image) }}" alt="News Image" style="max-width: 50px;">
+                            <img src="{{ asset('media/' . $item->image) }}" alt="News Image" style="max-width: 50px;">
                         @else
                             <p>No Image</p>
                         @endif
@@ -147,7 +147,7 @@
                         <label for="image">Image</label>
                         <input type="file" class="form-control" name="image" id="image">
                         @if($item->image)
-                            <p>Current Image: <img src="{{ asset('storage/' . $item->image) }}" style="max-width: 50px;"></p>
+                            <p>Current Image: <img src="{{ asset('media/' . $item->image) }}" style="max-width: 50px;"></p>
                         @endif
                     </div>
 

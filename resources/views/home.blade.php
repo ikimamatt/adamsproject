@@ -16,7 +16,7 @@
     ============================================================ --}}
     <section class="hero-section" id="beranda">
         {{-- Background image --}}
-        <img src="{{ asset('storage/' . $jumbotron->background_image) }}"
+        <img src="{{ asset('media/' . $jumbotron->background_image) }}"
              alt="" class="hero-bg-image" aria-hidden="true">
         <div class="hero-overlay" aria-hidden="true"></div>
 
@@ -29,7 +29,7 @@
         </div>
 
         {{-- Foto profil --}}
-        <img src="{{ asset('storage/' . $jumbotron->profile_image) }}"
+        <img src="{{ asset('media/' . $jumbotron->profile_image) }}"
              alt="Adam Dustin Bhakti"
              class="hero-profile-image"
              aria-hidden="true">
@@ -64,7 +64,7 @@
     <div class="intro-section">
         <div class="intro-image-wrap">
             <span class="intro-image-deco" aria-hidden="true"></span>
-            <img src="{{ asset('storage/' . $introduction->image) }}"
+            <img src="{{ asset('media/' . $introduction->image) }}"
                  alt="Adam Dustin Bhakti"
                  class="intro-image">
         </div>
@@ -146,7 +146,7 @@
             @foreach ($allnews->take(6) as $news)
             <a href="{{ $news->link }}" target="_blank" class="news-card">
                 <div class="news-card-img-wrap">
-                    <img src="{{ asset('storage/' . $news->image) }}"
+                    <img src="{{ asset('media/' . $news->image) }}"
                          alt="{{ $news->title }}"
                          class="news-card-img">
                     <div class="news-card-overlay" aria-hidden="true"></div>

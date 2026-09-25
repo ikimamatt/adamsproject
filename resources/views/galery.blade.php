@@ -50,8 +50,8 @@
         <!-- Gallery Image 1 -->
 
             @foreach($galleries as $gallery)
-        <div class="relative group overflow-hidden rounded-md shadow-md aspect-[1/1] cursor-pointer" onclick="openImage('{{ asset('storage/' . $gallery->image) }}')">
-            <img src="{{ asset('storage/' . $gallery->image) }}" alt="" class="object-cover w-full h-full transform transition-transform duration-300 group-hover:scale-110">
+        <div class="relative group overflow-hidden rounded-md shadow-md aspect-[1/1] cursor-pointer" onclick="openImage('{{ asset('media/' . $gallery->image) }}')">
+            <img src="{{ asset('media/' . $gallery->image) }}" alt="" class="object-cover w-full h-full transform transition-transform duration-300 group-hover:scale-110">
             <div class="absolute inset-0 bg-gradient-to-t from-black opacity-50"></div>
         </div>
         @endforeach

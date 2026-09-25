@@ -34,8 +34,8 @@
                         @if($logo && $logo->profile_image)
                             <div class="mt-2">
                                 <!-- Gambar bisa diklik untuk melihatnya lebih besar -->
-                                <a href="{{ asset('storage/' . $logo->profile_image) }}" data-toggle="lightbox" data-gallery="example-gallery">
-                                    <img src="{{ asset('storage/' . $logo->profile_image) }}" alt="Profile Image" width="100" class="img-thumbnail">
+                                <a href="{{ asset('media/' . $logo->profile_image) }}" data-toggle="lightbox" data-gallery="example-gallery">
+                                    <img src="{{ asset('media/' . $logo->profile_image) }}" alt="Profile Image" width="100" class="img-thumbnail">
                                 </a>
                             </div>
                         @endif

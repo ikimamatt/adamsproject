@@ -13,7 +13,7 @@
         <div class="navbar-inner">
             <!-- Logo -->
             <a href="{{ route('home') }}" class="navbar-logo" aria-label="Beranda">
-                <img src="{{ asset('storage/' . $logo->profile_image) }}" alt="Adam Dustin Bhakti">
+                <img src="{{ asset('media/' . $logo->profile_image) }}" alt="Adam Dustin Bhakti">
             </a>
 
             <!-- Desktop Links -->

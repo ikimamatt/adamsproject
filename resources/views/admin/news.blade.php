@@ -79,7 +79,7 @@
                     </td>
                     <td>
                         @if($item->image)
-                            <img src="{{ asset('storage/' . $item->image) }}" alt="News Image" style="max-width: 50px;">
+                            <img src="{{ asset('media/' . $item->image) }}" alt="News Image" style="max-width: 50px;">
                         @else
                             <p>No Image</p>
                         @endif

@@ -54,8 +54,8 @@
                     @if($jumbotron->background_image)
                         <div class="mt-2">
                             <!-- Gambar bisa diklik untuk melihatnya lebih besar -->
-                            <a href="{{ asset('storage/' . $jumbotron->background_image) }}" data-toggle="lightbox" data-gallery="example-gallery">
-                                <img src="{{ asset('storage/' . $jumbotron->background_image) }}" alt="Background Image" width="100" class="img-thumbnail">
+                            <a href="{{ asset('media/' . $jumbotron->background_image) }}" data-toggle="lightbox" data-gallery="example-gallery">
+                                <img src="{{ asset('media/' . $jumbotron->background_image) }}" alt="Background Image" width="100" class="img-thumbnail">
                             </a>
                         </div>
                     @endif
@@ -67,8 +67,8 @@
                     @if($jumbotron->profile_image)
                         <div class="mt-2">
                             <!-- Gambar bisa diklik untuk melihatnya lebih besar -->
-                            <a href="{{ asset('storage/' . $jumbotron->profile_image) }}" data-toggle="lightbox" data-gallery="example-gallery">
-                                <img src="{{ asset('storage/' . $jumbotron->profile_image) }}" alt="Profile Image" width="100" class="img-thumbnail">
+                            <a href="{{ asset('media/' . $jumbotron->profile_image) }}" data-toggle="lightbox" data-gallery="example-gallery">
+                                <img src="{{ asset('media/' . $jumbotron->profile_image) }}" alt="Profile Image" width="100" class="img-thumbnail">
                             </a>
                         </div>
                     @endif

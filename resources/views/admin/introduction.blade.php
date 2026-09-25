@@ -40,8 +40,8 @@
                         <input type="file" class="form-control-file" id="image" name="image" accept="image/*">
                         @if($introduction->image)
                             <div class="mt-2">
-                                <a href="{{ asset('storage/' . $introduction->image) }}" data-toggle="lightbox" data-gallery="example-gallery">
-                                    <img src="{{ asset('storage/' . $introduction->image) }}" alt="Image" width="100" class="img-thumbnail">
+                                <a href="{{ asset('media/' . $introduction->image) }}" data-toggle="lightbox" data-gallery="example-gallery">
+                                    <img src="{{ asset('media/' . $introduction->image) }}" alt="Image" width="100" class="img-thumbnail">
                                 </a>
                             </div>
                         @endif

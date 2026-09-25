@@ -35,7 +35,7 @@
                 @foreach ($allnews as $news)
                 <a href="{{ $news->link }}" target="_blank" class="news-card">
                     <div class="news-card-img-wrap">
-                        <img src="{{ asset('storage/' . $news->image) }}"
+                        <img src="{{ asset('media/' . $news->image) }}"
                              alt="{{ $news->title }}"
                              class="news-card-img">
                         <div class="news-card-overlay" aria-hidden="true"></div>
