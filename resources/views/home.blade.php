@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="description" content="Adam Dustin Bhakti — Pengusaha muda inspiratif dari Balikpapan, Kalimantan Timur. CEO Lexa Event, Ketua HIPMI, dan pelopor ekonomi kreatif.">
+    <link rel="icon" type="image/x-icon" href="{{ asset('img/logo.png') }}">
     @vite('resources/css/app.css')
     <title>Adam Dustin Bhakti — Perintis Harapan dari Kalimantan Timur</title>
 </head>
@@ -24,15 +25,14 @@
         <div class="hero-content animate-fadeup">
             <p class="hero-eyebrow">Pengusaha &amp; Tokoh Muda Kalimantan</p>
             <h1 class="hero-name">Adam<br>Dustin<br>Bhakti</h1>
-            <p class="hero-tagline">&ldquo;{{ $jumbotron->text_left }}&rdquo;</p>
+            <p class="hero-tagline">&ldquo;{{ trim($jumbotron->text_left, " \t\n\r\0\x0B\"'“”") }}&rdquo;</p>
             <a href="{{ route('profil') }}" class="btn-elegant-white">Mengenal Adam</a>
         </div>
 
         {{-- Foto profil --}}
         <img src="{{ asset('media/' . $jumbotron->profile_image) }}"
              alt="Adam Dustin Bhakti"
-             class="hero-profile-image"
-             aria-hidden="true">
+             class="hero-profile-image">
 
         {{-- Kutipan kanan --}}
         <div class="hero-right-text animate-fadein delay-300">
@@ -47,7 +47,7 @@
     <div class="featured-strip">
         <div class="featured-strip-inner">
             @foreach($featuredNews as $item)
-            <a href="{{ $item->link }}" target="_blank" class="featured-strip-item">
+            <a href="{{ $item->link }}" target="_blank" rel="noopener noreferrer" class="featured-strip-item">
                 <span class="featured-strip-label">{{ $item->category }}</span>
                 <p class="featured-strip-title">{{ $item->title }}</p>
                 <p class="featured-strip-sub">{{ Str::limit($item->subtitle, 90) }}</p>
@@ -85,7 +85,8 @@
     <div class="social-section">
         <h2 class="social-heading">Terhubung dengan Adam Dustin</h2>
         <div class="social-icons-row">
-            <a href="{{ $socialMedia->facebook }}" target="_blank" class="social-icon-item" aria-label="Facebook">
+            @if(!empty($socialMedia->facebook))
+            <a href="{{ $socialMedia->facebook }}" target="_blank" rel="noopener noreferrer" class="social-icon-item" aria-label="Facebook">
                 <div class="social-icon-circle">
                     <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                         <path d="M9 8H6v4h3v12h5V12h3.642l.358-4h-4V6.333C14 5.374 14.556 5 15.627 5H18V0h-3.81C10.537 0 9 1.482 9 4.889V8z"/>
@@ -93,7 +94,10 @@
                 </div>
                 <span class="social-icon-label">Facebook</span>
             </a>
-            <a href="{{ $socialMedia->instagram }}" target="_blank" class="social-icon-item" aria-label="Instagram">
+            @endif
+
+            @if(!empty($socialMedia->instagram))
+            <a href="{{ $socialMedia->instagram }}" target="_blank" rel="noopener noreferrer" class="social-icon-item" aria-label="Instagram">
                 <div class="social-icon-circle">
                     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                         <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
@@ -103,7 +107,10 @@
                 </div>
                 <span class="social-icon-label">Instagram</span>
             </a>
-            <a href="{{ $socialMedia->tiktok }}" target="_blank" class="social-icon-item" aria-label="TikTok">
+            @endif
+
+            @if(!empty($socialMedia->tiktok))
+            <a href="{{ $socialMedia->tiktok }}" target="_blank" rel="noopener noreferrer" class="social-icon-item" aria-label="TikTok">
                 <div class="social-icon-circle">
                     <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                         <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64c.298-.002.595.042.88.13V9.4a6.33 6.33 0 0 0-1-.08A6.34 6.34 0 0 0 3 15.66a6.34 6.34 0 0 0 10.82 4.49 6.27 6.27 0 0 0 1.83-4.49V8.69a8.18 8.18 0 0 0 4.79 1.51V6.74c-.28-.01-.58-.03-.85-.05z"/>
@@ -111,6 +118,7 @@
                 </div>
                 <span class="social-icon-label">TikTok</span>
             </a>
+            @endif
         </div>
     </div>
 
@@ -144,7 +152,7 @@
 
         <div class="news-grid">
             @foreach ($allnews->take(6) as $news)
-            <a href="{{ $news->link }}" target="_blank" class="news-card">
+            <a href="{{ $news->link }}" target="_blank" rel="noopener noreferrer" class="news-card">
                 <div class="news-card-img-wrap">
                     <img src="{{ asset('media/' . $news->image) }}"
                          alt="{{ $news->title }}"
