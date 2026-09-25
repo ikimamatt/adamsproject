@@ -1,15 +1,15 @@
 <IfModule mod_rewrite.c>
-Options +FollowSymLinks
 RewriteEngine On
 
-RewriteCond %{REQUEST_URI} !^/public/ 
+# 1. Teruskan request /storage langsung ke Laravel (Route Streamer)
+RewriteRule ^storage/(.*)$ public/index.php [L]
 
+# 2. Asset statis lainnya (CSS, JS, dsb) diteruskan ke folder public/
+RewriteCond %{REQUEST_URI} !^/public/ 
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*)$ /public/$1 [L]
 
-
-
-RewriteRule ^(.*)$ /public/$1 
-#RewriteRule ^ index.php [L]
+# 3. Entry point utama Laravel
 RewriteRule ^(/)?$ public/index.php [L] 
-</IfModule>
+</IfModule>
