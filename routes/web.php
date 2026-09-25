@@ -75,16 +75,19 @@ Route::middleware('admin')->prefix('admin')->group(function () {
 
 // Route streamer untuk menyajikan file storage langsung via PHP
 Route::get('/storage/{path}', function ($path) {
-    $filePath = storage_path('app/public/' . $path);
-    $realPath = realpath($filePath);
-    $basePath = realpath(storage_path('app/public'));
-
-    // Keamanan: pastikan file berada di dalam storage/app/public dan memang ada
-    if (!$realPath || !str_starts_with($realPath, $basePath) || !file_exists($realPath)) {
+    // Keamanan: cegah directory traversal
+    if (str_contains($path, '..')) {
         abort(404);
     }
 
-    return response()->file($realPath, [
+    $filePath = storage_path('app/public/' . $path);
+
+    if (!file_exists($filePath)) {
+        abort(404);
+    }
+
+    return response()->file($filePath, [
         'Cache-Control' => 'public, max-age=31536000',
     ]);
 })->where('path', '.*')->name('storage.stream');
+
